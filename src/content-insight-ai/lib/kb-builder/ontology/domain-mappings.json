@@ -1,0 +1,14 @@
+{
+  "mappings": [
+    { "from": "scam", "to": "phishing", "type": "related_to", "confidence": 0.95 },
+    { "from": "phishing", "to": "credential_theft", "type": "related_to", "confidence": 0.9 },
+    { "from": "credential_theft", "to": "identity_theft", "type": "related_to", "confidence": 0.9 },
+    { "from": "pornography", "to": "grooming", "type": "related_to", "confidence": 0.8 },
+    { "from": "pornography", "to": "child_exploitation", "type": "related_to", "confidence": 0.9 },
+    { "from": "violence", "to": "terrorism", "type": "related_to", "confidence": 0.8 },
+    { "from": "terrorism", "to": "extremism", "type": "related_to", "confidence": 0.85 },
+    { "from": "medical_educational_content", "to": "safe", "type": "related_to", "confidence": 0.85 },
+    { "from": "scientific_educational_content", "to": "safe", "type": "related_to", "confidence": 0.85 },
+    { "from": "artistic_nudity", "to": "safe", "type": "related_to", "confidence": 0.7 }
+  ]
+}

@@ -1,0 +1,36 @@
+{
+  "name": "content-insight-ai-standalone",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Standalone test environment for Content Insight AI",
+  "scripts": {
+    "dev": "vite",
+    "build": "node scripts/encrypt-kb.cjs && vite build",
+    "preview": "vite preview --port 4173",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "typecheck": "tsc --noEmit",
+    "encrypt-kb": "node scripts/encrypt-kb.cjs",
+    "rotate-key": "node scripts/rotate-key.cjs",
+    "verify-crypto": "node scripts/full-pipeline-test.cjs"
+  },
+  "dependencies": {
+    "@tensorflow/tfjs": "^4.22.0",
+    "nsfwjs": "^4.3.0",
+    "parquetjs-lite": "^0.8.7",
+    "pdfjs-dist": "^6.2.108",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "@rollup/rollup-linux-x64-gnu": "^4.63.3",
+    "@types/react": "^18.3.12",
+    "@types/react-dom": "^18.3.1",
+    "@vitejs/plugin-react": "^4.3.4",
+    "jsdom": "^25.0.1",
+    "typescript": "^5.6.3",
+    "vite": "^5.4.11",
+    "vitest": "^2.1.8"
+  }
+}

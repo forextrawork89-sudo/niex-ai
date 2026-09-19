@@ -1,0 +1,23 @@
+# Dependencies & build
+node_modules
+dist
+.vite
+.DS_Store
+
+# Logs & temp
+*.log
+*.tmp
+.kb-cache/
+vitest-results.json
+typecheck-output.txt
+served-test-app*.txt
+
+# Environment variables & secrets
+.env
+.env.*
+!.env.example
+
+# Large backups and archives
+*.zip
+knowledge_base_v1_backup/
+knowledge_base-new(28-iyun)/

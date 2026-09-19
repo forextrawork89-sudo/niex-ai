@@ -1,0 +1,20 @@
+const fs = require('fs');
+const { webcrypto } = require('crypto');
+const subtle = webcrypto.subtle;
+const KEY_BYTES = new Uint8Array([164,52,86,174,231,196,102,64,90,67,59,118,202,208,13,91,89,8,109,122,184,152,221,238,200,138,88,31,106,25,253,197]);
+(async () => {
+  const data = new Uint8Array(fs.readFileSync(require('path').resolve(__dirname, '../public/kb.enc')));
+  const magic = new TextDecoder().decode(data.slice(0, 4));
+  console.log('Magic:', magic, magic === 'CIAK' ? 'OK' : 'XATO');
+  const iv = data.slice(5, 17);
+  const ct = data.slice(17);
+  const key = await subtle.importKey('raw', KEY_BYTES, { name: 'AES-GCM' }, false, ['decrypt']);
+  const pt = await subtle.decrypt({ name: 'AES-GCM', iv }, key, ct);
+  const obj = JSON.parse(new TextDecoder().decode(pt));
+  console.log('Deshifrlandi! Fayllar:', Object.keys(obj.files).length);
+  console.log('harmful_examples:', Object.keys(obj.files).filter((k) => k.startsWith('harmful_examples/')).length);
+  const sample = Object.keys(obj.files).find((k) => k.includes('coverage_scoring'));
+  console.log('Namuna:', sample);
+  console.log('Mazmun boshi:', JSON.stringify(obj.files[sample].slice(0, 50)));
+  console.log('Shifrlangan baytlar (DevTools koerinishi):', [...data.slice(0, 32)].map((b) => b.toString(16).padStart(2, '0')).join(' '));
+})();
